@@ -18,7 +18,7 @@ public class Produto {
 	
 	private String nome;
 	
-	private BigDecimal valor;
+	private BigDecimal preco;
 
 	public Long getId() {
 		return id;
@@ -36,12 +36,14 @@ public class Produto {
 		this.nome = nome;
 	}
 
-	public BigDecimal getValor() {
-		return valor;
+	
+
+	public BigDecimal getPreco() {
+		return preco;
 	}
 
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
 	}
 
 	@Override

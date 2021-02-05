@@ -1,9 +1,18 @@
 package br.ce.hscastro.domain;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,7 +24,20 @@ public class Cliente {
 	private Long id;
 	
 	private String nome;
+	
+	private String email;
+		
+	private String cpfCnpj;
+	
+	private Integer tipo;
+	
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+	private List<Endereco> enderecos = new ArrayList<>();	
 
+	@ElementCollection
+	@CollectionTable(name = "telefone")
+	private Set<String> telefone = new HashSet<>();
+	
 	public Long getId() {
 		return id;
 	}
@@ -30,6 +52,46 @@ public class Cliente {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getCpfCnpj() {
+		return cpfCnpj;
+	}
+
+	public void setCpfCnpj(String cpfCnpj) {
+		this.cpfCnpj = cpfCnpj;
+	}
+
+	public Integer getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Integer tipo) {
+		this.tipo = tipo;
+	}
+
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
+	}
+
+	public Set<String> getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(Set<String> telefone) {
+		this.telefone = telefone;
 	}
 
 	@Override
