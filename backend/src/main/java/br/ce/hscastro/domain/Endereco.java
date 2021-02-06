@@ -1,5 +1,7 @@
 package br.ce.hscastro.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,10 +13,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="ENDERECOS")
-public class Endereco {
-	
+public class Endereco implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)	
 	private Long id;	
@@ -38,6 +44,7 @@ public class Endereco {
 	@Enumerated(EnumType.STRING)
 	private Uf uf;
 	
+	@JsonBackReference	
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;

@@ -1,17 +1,24 @@
 package br.ce.hscastro.domain;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
 
 
 @Entity
 @Table(name="PEDIDOS")
-public class Pedido {
+public class Pedido  implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +26,21 @@ public class Pedido {
 	
 	private LocalDateTime instante;
 	
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido")
+	private Pagamento pagamento;
+	
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
+	private Cliente cliente;
+	
+	@ManyToOne
+	@JoinColumn(name = "endereco_entrega_id")
+	private Endereco enderecoDeEntrega;
+		
+	
+	public Pedido() {
+		
+	}
 		
 	public Long getId() {
 		return id;
@@ -34,6 +56,22 @@ public class Pedido {
 
 	public void setInstante(LocalDateTime instante) {
 		this.instante = instante;
+	}
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Endereco getEnderecoDeEntrega() {
+		return enderecoDeEntrega;
+	}
+
+	public void setEnderecoDeEntrega(Endereco enderecoDeEntrega) {
+		this.enderecoDeEntrega = enderecoDeEntrega;
 	}
 
 	@Override
@@ -61,6 +99,4 @@ public class Pedido {
 		return true;
 	}
 	
-	
-
 }

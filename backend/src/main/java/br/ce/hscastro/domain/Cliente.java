@@ -1,5 +1,6 @@
 package br.ce.hscastro.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -14,10 +15,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="CLIENTES")
-public class Cliente {
-	
+public class Cliente implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
@@ -30,12 +35,18 @@ public class Cliente {
 	
 	private Integer tipo;
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy = "cliente")
 	private List<Endereco> enderecos = new ArrayList<>();	
 
 	@ElementCollection
 	@CollectionTable(name = "TELEFONES")
 	private Set<String> telefone = new HashSet<>();
+
+	
+	@OneToMany(mappedBy = "cliente")
+	private List<Pedido> pedidos = new ArrayList<>();	
+
 	
 	public Cliente() {
 		// TODO Auto-generated constructor stub
