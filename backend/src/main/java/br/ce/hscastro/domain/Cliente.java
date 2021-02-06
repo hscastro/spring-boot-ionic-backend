@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -16,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="clientes")
+@Table(name="CLIENTES")
 public class Cliente {
 	
 	@Id
@@ -31,13 +30,18 @@ public class Cliente {
 	
 	private Integer tipo;
 	
-	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "cliente")
 	private List<Endereco> enderecos = new ArrayList<>();	
 
 	@ElementCollection
-	@CollectionTable(name = "telefone")
+	@CollectionTable(name = "TELEFONES")
 	private Set<String> telefone = new HashSet<>();
 	
+	public Cliente() {
+		// TODO Auto-generated constructor stub
+	}
+	
+		
 	public Long getId() {
 		return id;
 	}
@@ -70,12 +74,12 @@ public class Cliente {
 		this.cpfCnpj = cpfCnpj;
 	}
 
-	public Integer getTipo() {
-		return tipo;
+	public TipoCliente getTipo() {
+		return TipoCliente.toEnum(tipo);
 	}
 
-	public void setTipo(Integer tipo) {
-		this.tipo = tipo;
+	public void setTipo(TipoCliente tipo) {
+		this.tipo = tipo.getCod();
 	}
 
 	public List<Endereco> getEnderecos() {

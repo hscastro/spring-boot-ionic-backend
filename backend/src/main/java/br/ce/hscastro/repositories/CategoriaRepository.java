@@ -3,9 +3,9 @@ package br.ce.hscastro.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.ce.hscastro.domain.Item;
+import br.ce.hscastro.domain.Categoria;
 
 @Repository
-public interface ItemRepository extends JpaRepository<Item, Long> {
+public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
 
 }

@@ -7,10 +7,12 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="enderecos")
+@Table(name="ENDERECOS")
 public class Endereco {
 	
 	@Id
@@ -35,6 +37,14 @@ public class Endereco {
 	@Column(nullable = false, length = 2)
 	@Enumerated(EnumType.STRING)
 	private Uf uf;
+	
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
+	private Cliente cliente;
+
+	@ManyToOne
+	@JoinColumn(name = "cidade_id")	
+	private Cidade cidade;
 	
 	
 	public Endereco() {
@@ -99,6 +109,22 @@ public class Endereco {
 		this.cep = cep;
 	}
 	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
+	}
+
 	public Uf getUf() {
 		return uf;
 	}

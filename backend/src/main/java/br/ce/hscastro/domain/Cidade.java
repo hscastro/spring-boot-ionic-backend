@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "cidades")
+@Table(name = "CIDADES")
 public class Cidade {
 	
 	@Id
@@ -18,7 +18,6 @@ public class Cidade {
 	@Column(name = "nome", nullable = false, length = 80)
 	private String nome;
 	
-	private Endereco endereco;
 	
 	public Cidade() {
 		// TODO Auto-generated constructor stub
@@ -40,14 +39,7 @@ public class Cidade {
 		this.nome = nome;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

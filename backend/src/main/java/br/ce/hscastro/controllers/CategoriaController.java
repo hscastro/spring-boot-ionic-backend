@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.ce.hscastro.domain.Item;
-import br.ce.hscastro.repositories.ItemRepository;
+import br.ce.hscastro.domain.Categoria;
+import br.ce.hscastro.repositories.CategoriaRepository;
 
 @RestController
-@RequestMapping("/itens")
-public class ItemController {
+@RequestMapping("/categorias")
+public class CategoriaController {
 
 	@Autowired
-	private ItemRepository itemRepository;
+	private CategoriaRepository categoriaRepository;
 	
 	@GetMapping
-	public List<Item> listar(){
-		return  itemRepository.findAll();
+	public List<Categoria> listar(){
+		return  categoriaRepository.findAll();
 	}
 }
