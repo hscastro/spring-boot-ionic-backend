@@ -1,6 +1,9 @@
 package br.ce.hscastro.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,11 +16,26 @@ public class Endereco {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)	
 	private Long id;	
+	
+	@Column(name = "logradouro", nullable = false, length = 120)
 	private String logradouro;
+	
+	@Column(name = "numero", nullable = false, length = 50)
 	private String numero;
+	
+	@Column(name = "complemento", nullable = false, length = 80)
 	private String complemento;
+	
+	@Column(name = "bairro", nullable = false, length = 80)
 	private String bairro;
+	
+	@Column(name = "cep", nullable = false, length = 10)
 	private String cep;
+	
+	@Column(nullable = false, length = 2)
+	@Enumerated(EnumType.STRING)
+	private Uf uf;
+	
 	
 	public Endereco() {
 		// TODO Auto-generated constructor stub
@@ -79,6 +97,14 @@ public class Endereco {
 
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+	
+	public Uf getUf() {
+		return uf;
+	}
+
+	public void setUf(Uf uf) {
+		this.uf = uf;
 	}
 
 	@Override

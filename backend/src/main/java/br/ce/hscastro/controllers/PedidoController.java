@@ -8,27 +8,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import br.ce.hscastro.domain.Venda;
-import br.ce.hscastro.repositories.VendaRepository;
-import br.ce.hscastro.services.VendaService;
+
+import br.ce.hscastro.domain.Pedido;
+import br.ce.hscastro.services.PedidoService;
 
 @RestController
-@RequestMapping("/vendas")
-public class VendaController {
+@RequestMapping("/pedidos")
+public class PedidoController {
 
 	@Autowired
-	private VendaRepository vendaRepository;
+	private PedidoService pedidoService;
 	
-	@Autowired
-	private VendaService vendaService;
 	
 	@GetMapping
-	public List<Venda> listar(){
-		return  vendaRepository.findAll();
+	public List<Pedido> listar(){
+		return  pedidoService.listar();
 	}
 	
 	@PostMapping
-	public Venda adicionar(@RequestBody Venda venda){
-		return vendaService.salvar(venda);
+	public Pedido adicionar(@RequestBody Pedido pedido){
+		return pedidoService.salvar(pedido);
 	}
 }

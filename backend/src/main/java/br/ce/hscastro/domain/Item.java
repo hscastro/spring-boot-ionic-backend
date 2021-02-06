@@ -18,7 +18,7 @@ public class Item {
 	private Long id;
 	
 	@ManyToOne
-	private Venda venda;
+	private Pedido pedido;
 	
 	
 	@ManyToOne
@@ -35,12 +35,12 @@ public class Item {
 		this.id = id;
 	}
 
-	public Venda getVenda() {
-		return venda;
+	public Pedido getVenda() {
+		return pedido;
 	}
 
-	public void setVenda(Venda venda) {
-		this.venda = venda;
+	public void setVenda(Pedido pedido) {
+		this.pedido = pedido;
 	}
 
 	public Produto getProduto() {

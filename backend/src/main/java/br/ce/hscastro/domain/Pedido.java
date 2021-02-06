@@ -1,36 +1,25 @@
 package br.ce.hscastro.domain;
 
-import java.math.BigDecimal;
-
+import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="produtos")
-public class Produto {
 
+
+@Entity
+@Table(name="pedidos")
+public class Pedido {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String nome;
+	private LocalDateTime instante;
 	
-	private BigDecimal preco;
-	
-	public Produto() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	public Produto(Long id, String nome, BigDecimal preco) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.preco = preco;
-	}
-
+		
 	public Long getId() {
 		return id;
 	}
@@ -39,22 +28,12 @@ public class Produto {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public LocalDateTime getInstante() {
+		return instante;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	
-
-	public BigDecimal getPreco() {
-		return preco;
-	}
-
-	public void setPreco(BigDecimal preco) {
-		this.preco = preco;
+	public void setInstante(LocalDateTime instante) {
+		this.instante = instante;
 	}
 
 	@Override
@@ -73,7 +52,7 @@ public class Produto {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Produto other = (Produto) obj;
+		Pedido other = (Pedido) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -82,4 +61,6 @@ public class Produto {
 		return true;
 	}
 	
+	
+
 }

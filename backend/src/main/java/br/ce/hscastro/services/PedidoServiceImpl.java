@@ -7,23 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.ce.hscastro.domain.Venda;
-import br.ce.hscastro.repositories.VendaRepository;
+import br.ce.hscastro.domain.Pedido;
+import br.ce.hscastro.repositories.PedidoRepository;
 
 @Service @Transactional(readOnly = false) 
-public class VendaServiceImpl implements VendaService {
+public class PedidoServiceImpl implements PedidoService {
 
-	@SuppressWarnings("unused")
+	
 	@Autowired
-	private VendaRepository vendaRepository;
+	private PedidoRepository pedidoRepository;
 	
 	@Override
-	public Venda salvar(Venda venda) {		
-		return vendaRepository.save(venda);
+	public Pedido salvar(Pedido pedido) {		
+		return pedidoRepository.save(pedido);
 	}
 
 	@Override
-	public void editar(Venda venda) {
+	public void editar(Pedido pedido) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -35,14 +35,14 @@ public class VendaServiceImpl implements VendaService {
 	}
 
 	@Override @Transactional(readOnly = true)
-	public Venda buscar(Long id) {
-		Optional<Venda> v = vendaRepository.findById(id);
+	public Pedido buscar(Long id) {
+		Optional<Pedido> v = pedidoRepository.findById(id);
 		return v.get();
 	}
 
 	@Override @Transactional(readOnly = true)
-	public List<Venda> listar() {
-		return vendaRepository.findAll();
+	public List<Pedido> listar() {
+		return pedidoRepository.findAll();
 	}
 
 
