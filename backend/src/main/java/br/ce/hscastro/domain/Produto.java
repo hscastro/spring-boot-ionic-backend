@@ -21,13 +21,13 @@ public class Produto implements Serializable {
 	
 	private String nome;
 	
-	private BigDecimal preco;
+	private double preco;
 	
 	public Produto() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Produto(Long id, String nome, BigDecimal preco) {
+	public Produto(Long id, String nome, double preco) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -52,11 +52,11 @@ public class Produto implements Serializable {
 
 	
 
-	public BigDecimal getPreco() {
+	public double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(BigDecimal preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 

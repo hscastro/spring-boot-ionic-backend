@@ -26,6 +26,14 @@ public class Categoria implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Categoria(Long id, String nome) {
+		super();
+		this.id = id;
+		this.nome = nome;
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}
