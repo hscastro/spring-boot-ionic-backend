@@ -1,16 +1,19 @@
 package br.ce.hscastro.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "categorias")
+@Table(name = "CATEGORIAS")
 public class Categoria implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -22,6 +25,9 @@ public class Categoria implements Serializable {
 	@Column(name = "nome", nullable = false, length = 80)
 	private String nome;
 	
+	@ManyToMany(mappedBy = "categorias")
+	private List<Produto> produtos = new ArrayList<>();
+	
 	public Categoria() {
 		// TODO Auto-generated constructor stub
 	}
@@ -31,8 +37,6 @@ public class Categoria implements Serializable {
 		this.id = id;
 		this.nome = nome;
 	}
-
-
 
 	public Long getId() {
 		return id;
@@ -48,6 +52,14 @@ public class Categoria implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
 	}
 
 	@Override
