@@ -2,6 +2,8 @@ package br.ce.hscastro.domain;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -36,12 +38,14 @@ public class Pedido  implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "endereco_entrega_id")
 	private Endereco enderecoDeEntrega;
-		
+	
+	private Set<ItemPedido> itens = new HashSet<>();
+	
 	
 	public Pedido() {
 		
 	}
-		
+				
 	public Long getId() {
 		return id;
 	}
@@ -72,6 +76,22 @@ public class Pedido  implements Serializable {
 
 	public void setEnderecoDeEntrega(Endereco enderecoDeEntrega) {
 		this.enderecoDeEntrega = enderecoDeEntrega;
+	}	
+	
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
+	}
+
+	public Set<ItemPedido> getItens() {
+		return itens;
+	}
+
+	public void setItens(Set<ItemPedido> itens) {
+		this.itens = itens;
 	}
 
 	@Override
