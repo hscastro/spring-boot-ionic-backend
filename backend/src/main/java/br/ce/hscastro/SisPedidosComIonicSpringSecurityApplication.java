@@ -1,5 +1,6 @@
 package br.ce.hscastro;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import br.ce.hscastro.domain.Categoria;
+import br.ce.hscastro.domain.Endereco;
+import br.ce.hscastro.domain.Pedido;
 import br.ce.hscastro.domain.Produto;
 import br.ce.hscastro.repositories.CategoriaRepository;
 import br.ce.hscastro.repositories.ProdutoRepository;
@@ -48,14 +51,23 @@ public class SisPedidosComIonicSpringSecurityApplication implements CommandLineR
 		
 		p1.getCategorias().addAll(Arrays.asList(cat1));
 		p2.getCategorias().addAll(Arrays.asList(cat1, cat2));
-		p3.getCategorias().addAll(Arrays.asList(cat1));
+		p3.getCategorias().addAll(Arrays.asList(cat1));		
+		
 		
 		categoriaRepository.save(cat1);
 		categoriaRepository.save(cat2);
 		categoriaRepository.save(cat3);
 		produtoRepository.save(p1);
 		produtoRepository.save(p2);
-		produtoRepository.save(p3);		
+		produtoRepository.save(p3);	
+		
+		Endereco e1 = new Endereco();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat();
+		 
+		//Pedido ped1 = new Pedido(null, sdf.parse("22/02/2021 22:10"), cat1, e1);
+		
+		//ItemPedido ip1 = new ItemPedido();
 		
 	}
 

@@ -2,6 +2,7 @@ package br.ce.hscastro.services;
 
 import java.util.List;
 
+import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,16 +10,18 @@ import org.springframework.transaction.annotation.Transactional;
 import br.ce.hscastro.domain.Categoria;
 import br.ce.hscastro.repositories.CategoriaRepository;
 
+
 @Service @Transactional(readOnly = false) 
 public class CategoriaServiceImpl implements CategoriaService {
 
 	@Autowired
-	private CategoriaRepository categoriaRepository;
+	private CategoriaRepository repository;
 	
 	@Override
-	public void salvar(Categoria categoria) {		
-		categoriaRepository.save(categoria);
-	}
+	public Categoria insert(Categoria obj) {
+	    obj.setId(null);
+	    return repository.save(obj);
+	}	
 
 	@Override
 	public void editar(Categoria categoria) {
@@ -34,8 +37,12 @@ public class CategoriaServiceImpl implements CategoriaService {
 
 	@Override @Transactional(readOnly = true)
 	public Categoria buscar(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Categoria obj = repository.getOne(id);
+		if(obj == null) {
+			throw new ObjectNotFoundException("Objeto não encontro Id "+id
+					+" Tipo: "+ Categoria.class.getName(), null);
+		}
+		return obj;
 	}
 
 	@Override @Transactional(readOnly = true)
@@ -43,5 +50,6 @@ public class CategoriaServiceImpl implements CategoriaService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

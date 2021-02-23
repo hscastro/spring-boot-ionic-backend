@@ -1,7 +1,12 @@
 package br.ce.hscastro.domain;
 
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+
+@Entity
 public class ItemPedido {
 
+	@EmbeddedId
 	private ItemPedidoPk id = new ItemPedidoPk();
 	
 	private Double descontos;
