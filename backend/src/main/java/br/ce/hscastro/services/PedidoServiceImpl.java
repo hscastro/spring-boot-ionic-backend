@@ -15,34 +15,34 @@ public class PedidoServiceImpl implements PedidoService {
 
 	
 	@Autowired
-	private PedidoRepository pedidoRepository;
+	private PedidoRepository repository;
 	
 	@Override
-	public Pedido salvar(Pedido pedido) {		
-		return pedidoRepository.save(pedido);
+	public Pedido save(Pedido pedido) {		
+		return repository.save(pedido);
 	}
 
 	@Override
-	public void editar(Pedido pedido) {
+	public void update(Pedido pedido) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void excluir(Long id) {
+	public void delete(Long id) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override @Transactional(readOnly = true)
-	public Pedido buscar(Long id) {
-		Optional<Pedido> v = pedidoRepository.findById(id);
+	public Pedido find(Long id) {
+		Optional<Pedido> v = repository.findById(id);
 		return v.get();
 	}
 
 	@Override @Transactional(readOnly = true)
-	public List<Pedido> listar() {
-		return pedidoRepository.findAll();
+	public List<Pedido> findAll() {
+		return repository.findAll();
 	}
 
 

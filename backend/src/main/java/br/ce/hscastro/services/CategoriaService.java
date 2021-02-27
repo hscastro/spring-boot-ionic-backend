@@ -7,9 +7,9 @@ import br.ce.hscastro.domain.Categoria;
 public interface CategoriaService {
 
 	public Categoria insert(Categoria obj);	
-	public void editar(Categoria categoria);
+	public Categoria update(Categoria categoria);
 	public void excluir(Long id);
-	public Categoria buscar(Long id);
+	public Categoria find(Long id);
 	public List<Categoria> listar();
 	
 }

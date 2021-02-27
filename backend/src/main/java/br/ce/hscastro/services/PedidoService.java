@@ -5,9 +5,9 @@ import br.ce.hscastro.domain.Pedido;
 
 public interface PedidoService {
 
-	public Pedido salvar(Pedido pedido);
-	public void editar(Pedido pedido);
-	public void excluir(Long id);
-	public Pedido buscar(Long id);
-	public List<Pedido> listar();
+	public Pedido save(Pedido pedido);
+	public void update(Pedido pedido);
+	public void delete(Long id);
+	public Pedido find(Long id);
+	public List<Pedido> findAll();
 }

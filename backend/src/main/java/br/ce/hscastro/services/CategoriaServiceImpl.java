@@ -6,6 +6,7 @@ import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import br.ce.hscastro.domain.Categoria;
 import br.ce.hscastro.repositories.CategoriaRepository;
@@ -24,9 +25,9 @@ public class CategoriaServiceImpl implements CategoriaService {
 	}	
 
 	@Override
-	public void editar(Categoria categoria) {
-		// TODO Auto-generated method stub
-		
+	public Categoria update(Categoria categoria) {
+		find(categoria.getId());
+	    return repository.save(categoria);		
 	}
 
 	@Override
@@ -36,8 +37,9 @@ public class CategoriaServiceImpl implements CategoriaService {
 	}
 
 	@Override @Transactional(readOnly = true)
-	public Categoria buscar(Long id) {
+	public Categoria find(Long id) {
 		Categoria obj = repository.getOne(id);
+		
 		if(obj == null) {
 			throw new ObjectNotFoundException("Objeto não encontro Id "+id
 					+" Tipo: "+ Categoria.class.getName(), null);

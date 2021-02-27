@@ -6,9 +6,9 @@ import br.ce.hscastro.domain.Cliente;
 
 public interface ClienteService {
 
-	public void salvar(Cliente cliente);
-	public void editar(Cliente cliente);
-	public void excluir(Long id);
-	public Cliente buscar(Long id);
-	public List<Cliente> listar();	
+	public void save(Cliente cliente);
+	public void update(Cliente cliente);
+	public void delete(Long id);
+	public Cliente find(Long id);
+	public List<Cliente> findAll();	
 }

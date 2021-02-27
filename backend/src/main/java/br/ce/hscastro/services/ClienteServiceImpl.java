@@ -16,32 +16,31 @@ public class ClienteServiceImpl implements ClienteService {
 	private ClienteRepository clienteRepository;
 	
 	@Override
-	public void salvar(Cliente cliente) {		
+	public void save(Cliente cliente) {		
 		clienteRepository.save(cliente);
 	}
 
 	@Override
-	public void editar(Cliente cliente) {
+	public void update(Cliente cliente) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void excluir(Long id) {
+	public void delete(Long id) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override @Transactional(readOnly = true)
-	public Cliente buscar(Long id) {
+	public Cliente find(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override @Transactional(readOnly = true)
-	public List<Cliente> listar() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Cliente> findAll() {		
+		return clienteRepository.findAll();
 	}
 
 }
