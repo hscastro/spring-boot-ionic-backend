@@ -4,6 +4,8 @@ import java.util.List;
 
 import br.ce.hscastro.domain.Cliente;
 
+//interface de serviços de CategoriaService
+
 public interface ClienteService {
 
 	public void save(Cliente cliente);

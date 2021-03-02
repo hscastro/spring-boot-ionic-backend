@@ -6,11 +6,12 @@ import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
+
 
 import br.ce.hscastro.domain.Categoria;
 import br.ce.hscastro.repositories.CategoriaRepository;
 
+//classe de serviços de CategoriaServiceImpl
 
 @Service @Transactional(readOnly = false) 
 public class CategoriaServiceImpl implements CategoriaService {
@@ -31,9 +32,9 @@ public class CategoriaServiceImpl implements CategoriaService {
 	}
 
 	@Override
-	public void excluir(Long id) {
-		// TODO Auto-generated method stub
-		
+	public void delete(Long id) {
+	    find(id);
+		repository.deleteById(id);			
 	}
 
 	@Override @Transactional(readOnly = true)

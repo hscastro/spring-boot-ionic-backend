@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import br.ce.hscastro.domain.Produto;
 import br.ce.hscastro.repositories.ProdutoRepository;
 
+//classe de serviços
+
 @Service @Transactional(readOnly = false) 
 public class ProdutoServiceImpl implements ProdutoService {
 

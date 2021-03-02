@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import br.ce.hscastro.domain.Pagamento;
 import br.ce.hscastro.repositories.PagamentoRepository;
 
+//classe de serviços
+
 @Service @Transactional(readOnly = false) 
 public class PagamentoServiceImpl implements PagamentoService {
 

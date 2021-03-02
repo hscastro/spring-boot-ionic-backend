@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 import br.ce.hscastro.domain.Cliente;
 import br.ce.hscastro.repositories.ClienteRepository;
 
+//classe de serviços
+
 @Service @Transactional(readOnly = false) 
 public class ClienteServiceImpl implements ClienteService {
 
